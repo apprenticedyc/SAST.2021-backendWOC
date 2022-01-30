@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hex.woc.mapper.UserMapper">
+
+
+    <select id="selectAll" resultType="com.hex.woc.entity.User">
+        select *
+        from account
+    </select>
+    <select id="selectByName" parameterType="String" resultType="com.hex.woc.entity.User">
+        select *
+        from account
+        where username = #{username}
+    </select>
+
+    <delete id="deleteUserById" parameterType="Integer">
+        delete
+        from account
+        where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.hex.woc.entity.User">
+        update accounut
+        set `username` = #{username},
+            `password`= #{password}
+        where id = #{id}
+    </update>
+
+    <insert id="save">
+        insert into account(username, password, email) value (#{username},#{password},#{email})
+    </insert>
+
+</mapper>
